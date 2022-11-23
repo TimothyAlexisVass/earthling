@@ -1,0 +1,65 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  weight: 1
+  length: 1
+  refined_carbohydrates: 1
+  learning: 1
+  plans_motivation: 1
+  denatured_macronutrients: 1
+  nutritional_requirement: 1
+  nutritionally_dense: 1
+  tattoos: 1
+  align_with_facts: 1
+  avoid_carcinogens: 1
+  avoid_excess_salt: 1
+  enjoy_daily_activities: 1
+  alcohol: 1
+  smoking: 1
+  regulated_alkaloids: 1
+  unregulated_alkaloids: 1
+  physical_activity: 1
+  stretching_resting: 1
+  exercise_presence: 1
+  posture: 1
+  outdoors: 1
+  sleep_amount: 1
+  hormone_disturbing: 1
+  relationships: 1
+  leisure_time: 1
+  economy: 1
+  email: MyString
+  name: MyString
+  phone: MyString
+
+two:
+  weight: 1
+  length: 1
+  refined_carbohydrates: 1
+  learning: 1
+  plans_motivation: 1
+  denatured_macronutrients: 1
+  nutritional_requirement: 1
+  nutritionally_dense: 1
+  tattoos: 1
+  align_with_facts: 1
+  avoid_carcinogens: 1
+  avoid_excess_salt: 1
+  enjoy_daily_activities: 1
+  alcohol: 1
+  smoking: 1
+  regulated_alkaloids: 1
+  unregulated_alkaloids: 1
+  physical_activity: 1
+  stretching_resting: 1
+  exercise_presence: 1
+  posture: 1
+  outdoors: 1
+  sleep_amount: 1
+  hormone_disturbing: 1
+  relationships: 1
+  leisure_time: 1
+  economy: 1
+  email: MyString
+  name: MyString
+  phone: MyString
