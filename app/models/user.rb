@@ -2,11 +2,11 @@ class User < ApplicationRecord
   before_save :downcase_email
 
   validates :name, length: { minimum: 2, maximum: 255 },
-                   format: { with: /^[A-Za-z\u00C0-\u00FF][A-Za-z\u00C0-\u00FF\'\-]+([\ A-Za-z\u00C0-\u00FF][A-Za-z\u00C0-\u00FF\'\-]+)*/ },
+                   format: { with: /\A[A-Za-z\u00C0-\u00FF][A-Za-z\u00C0-\u00FF\'\-]+([\ A-Za-z\u00C0-\u00FF][A-Za-z\u00C0-\u00FF\'\-]+)*/ }
   validates :email, length: { maximum: 255 },
                     format: URI::MailTo::EMAIL_REGEXP,
                     uniqueness: { case_sensitive: false }
-  validates_presence_of :name, :email, :weight, :length,
+  validates_presence_of :name, :email, :weight, :height,
                         :refined_carbohydrates, :learning, :plans_motivation,
                         :denatured_macronutrients, :nutritional_requirement,
                         :nutritionally_dense, :tattoos, :align_with_facts,

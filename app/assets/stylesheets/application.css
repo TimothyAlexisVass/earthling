@@ -103,6 +103,10 @@ form {
     width: 100%;
 }
 
+input {
+    padding: 10px;
+}
+
 h1, h2, h3, h4, h5 {
     font-family: 'UniSansThin';
     color: var(--distinguished);
@@ -204,6 +208,57 @@ li.autocomplete-listitem:hover {
     cursor: pointer;
 }
 
+.coaching-form input[type="range"] {
+    width: 80%;
+    margin: 10px 12% -15px 9%;
+    height: 20px;
+}
+
+.coaching-label, .coaching-range {
+    width: 100%;
+}
+
+.coaching-range {
+    direction: rtl
+}
+
+.coaching-label {
+    display: block;
+    margin-top: 20px;
+}
+
+.coaching-label a {
+    font-size: 16px;
+}
+
+.coaching-field-description {
+    font-size: 16px;
+    font-style: italic;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-1, .flex-5 {
+    width: 0;
+}
+
+.flex-1 {
+    flex-grow: 1;
+}
+
+.flex-5 {
+    flex-grow: 5;
+}
+
+.coaching-form .flex p {
+    width: 20%;
+    text-align: center;
+    font-size: 17px;
+}
+
 .aramaic {
     font-size: 135%;
     font-family: "Times New Roman";
@@ -246,13 +301,12 @@ li.autocomplete-listitem:hover {
 input[type="submit"], .swal-button {
     font-family: 'MontserratExtraLight';
     background-color: white;
-    color: #ddd;
+    color: #777;
     border: none;
     border-radius: 20px;
-    text-shadow: -1px -1px 0 rgba(0, 0, 0, .4);
     font-weight: 600;
     font-size: 20px;
-    padding: 20px 44px;
+    padding: 5px 24px;
     margin: 20px 0 0 0;
     cursor: pointer;
     box-shadow: var(--3d-shadow);
@@ -295,16 +349,6 @@ input[type="submit"]:disabled {
     text-transform: uppercase;
 }
 
-.flex {
-    display: flex;
-    justify-content: space-between;
-}
-
-.flex p {
-    width: 20%;
-    text-align: center;
-}
-
 .xx-large {
     font-size: 40px;
 }
@@ -345,4 +389,34 @@ input[type="submit"]:disabled {
     .small {
         font-size: 10px;
     }
+}
+
+#show-debug, .debug_dump {
+    min-height: 30px;
+}
+
+.debug_dump {
+    padding: 5px 0;
+    background: rgb(240, 214, 195);
+    transition: all .3s linear;
+    position: fixed;
+    bottom: -50%;
+    left: 32px;
+    width: 99%;
+}
+
+#show-debug:hover .debug_dump, .debug_dump:hover {
+    bottom: 0px;
+}
+
+#show-debug {
+    background: rgb(240, 214, 195);
+    padding: 0 10px 10px 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+#show-debug {
+    user-select: none;
 }

@@ -1,0 +1,128 @@
+<h2>Lifstyle survey</h2>
+<%= form_for(@user, html: {class: "coaching-form"}) do |form| %>
+  <%= render 'shared/error_messages', object: form.object %>
+  <div class="flex">
+    <%= form.text_field :name, placeholder: "Your Name", class: "flex-5" %>
+    <%= form.email_field :email, placeholder: "your@email.here", class: "flex-5" %>
+    <%= form.number_field :weight, placeholder: "weight (kg)", class: "flex-1" %>
+    <%= form.number_field :height, placeholder: "height (cm)", class: "flex-1" %>
+  </div>
+  <%= form.label :refined_carbohydrates, value: "I am free from refined carbohydrates", class: "coaching-label" %>
+  <div class="coaching-field-description">"White" sugars and starches</div>  
+  <%= form.range_field :refined_carbohydrates, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <%= render 'users/options/always' %>
+
+  <%= form.label :learning, value: "I enjoy learning", class: "coaching-label" %>
+  <%= form.range_field :learning, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <%= render 'users/options/always' %>
+
+  <%= form.label :plans_motivation, value: "I have motivation to realize my plans", class: "coaching-label" %>
+  <%= form.range_field :plans_motivation, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <%= render 'users/options/always' %>
+
+  <%= form.label :denatured_macronutrients, value: "I avoid denatured carbohydrates/proteins/fats", class: "coaching-label" %>
+  <div class="coaching-field-description">For exampe deep fried, fried, grilled, burnt, ...</div>  
+  <%= form.range_field :denatured_macronutrients, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <%= render 'users/options/always' %>
+
+  <%= form.label :nutritional_requirement, value: "I get the recommended nutritional requirement from food", class: "coaching-label" %>
+  <%= form.range_field :nutritional_requirement, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <%= render 'users/options/always' %>
+
+  <%= form.label :nutritionally_dense, value: "I eat a nutritionally dense diet according to actual nutritional science", class: "coaching-label" %>
+  <%= form.range_field :nutritionally_dense, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <%= render 'users/options/always' %>
+
+  <%= form.label :tattoos, value: "Tattoos", class: "coaching-label" %>
+  <%= form.range_field :tattoos, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <div class="flex"><p>Free from</p><p>Small</p><p>Medium</p><p>Large</p></div>
+
+  <%= form.label :align_with_facts, value: "I live aligned with facts, free from trendy opinions and advice", class: "coaching-label" %>
+  <%= form.range_field :align_with_facts, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <%= render 'users/options/always' %>
+
+  <% wikipedia_link = link_to '(https://en.wikipedia.org/wiki/IARC_group_1)', 'https://en.wikipedia.org/wiki/IARC_group_1' %>
+  <%= form.label :avoid_carcinogens, class: "coaching-label" do
+    "I avoid proven carcinogens #{wikipedia_link}".html_safe
+  end %>
+  <div class="coaching-field-description">Radioactivity, processed meat, alcohol, hot drinks, ...</div>  
+  <%= form.range_field :avoid_carcinogens, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <%= render 'users/options/always' %>
+
+  <%= form.label :avoid_excess_salt, value: "I avoid excess salt", class: "coaching-label" %>
+  <div class="coaching-field-description">Sodium chloride</div>  
+  <%= form.range_field :avoid_excess_salt, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <%= render 'users/options/always' %>
+
+  <%= form.label :enjoy_daily_activities, value: "I enjoy my daily activities", class: "coaching-label" %>
+  <div class="coaching-field-description">Work, studies, parent, ...</div>  
+  <%= form.range_field :enjoy_daily_activities, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <%= render 'users/options/always' %>
+
+  <%= form.label :alcohol, value: "Alcohol", class: "coaching-label" %>
+  <%= form.range_field :alcohol, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <div class="flex"><p>Sober 1+ years</p><p>Sometimes</p><p>Monthly</p><p>Weekly</p></div>
+
+  <%= form.label :smoking, value: "Smoking", class: "coaching-label" %>
+  <div class="coaching-field-description">Cigarettes, cigarillos, cigars, pipe, ...</div>  
+  <%= form.range_field :smoking, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <div class="flex"><p>Free 5+ years</p><p>Free 2-5 years</p><p>Free 1-2 years</p><p>Smoked this year</p></div>
+
+  <%= form.label :regulated_alkaloids, value: "Other regulated addictive/dependency inducing drugs", class: "coaching-label" %>
+  <div class="coaching-field-description">Caffeine (coffee, cacao, green/black/white tea, mate, ...), nicotine, codeine, ...</div>  
+  <%= form.range_field :regulated_alkaloids, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <div class="flex"><p>Free 2+ years</p><p>Free 1-2 years</p><p>Monthly</p><p>Weekly</p></div>
+
+  <%= form.label :unregulated_alkaloids, value: "Unregulated addictive drugs", class: "coaching-label" %>
+  <%= form.range_field :unregulated_alkaloids, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <div class="flex"><p>Free 2+ years</p><p>Free 1-2 years</p><p>Monthly</p><p>Weekly</p></div>
+
+  <%= form.label :physical_activity, value: "I am physically active", class: "coaching-label" %>
+  <div class="coaching-field-description">Hours per week</div>  
+  <%= form.range_field :physical_activity, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <div class="flex"><p>12+</p><p>4-12</p><p>1-4</p><p>Rarely</p></div>
+
+  <%= form.label :stretching_resting, value: "I stretch and rest", class: "coaching-label" %>
+  <%= form.range_field :stretching_resting, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <%= render 'users/options/daily' %>
+
+  <%= form.label :exercise_presence, value: "I exercise presence / awareness", class: "coaching-label" %>
+  <%= form.range_field :exercise_presence, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <%= render 'users/options/daily' %>
+
+  <%= form.label :outdoors, value: "I am outside and get at least 30 minutes of daylight", class: "coaching-label" %>
+  <%= form.range_field :outdoors, min: 0, max: 3, value: 3, class: "coaching-range" %>
+  <%= render 'users/options/daily' %>
+
+  <%= form.label :posture, value: "I have great posture", class: "coaching-label" %>
+  <%= form.range_field :posture, min: 0, max: 4, value: 4, class: "coaching-range" %>
+  <%= render 'users/options/truthness' %>
+
+  <%= form.label :sleep_amount, value: "I sleep enough every night", class: "coaching-label" %>
+  <%= form.range_field :sleep_amount, min: 0, max: 4, value: 4, class: "coaching-range" %>
+  <%= render 'users/options/truthness' %>
+
+  <%= form.label :hormone_disturbing, value: "I avoid hormone disturbing substances", class: "coaching-label" %>
+  <div class="coaching-field-description">Contraceptives, meat, cheese, sweeteners, ...</div>  
+  <%= form.range_field :hormone_disturbing, min: 0, max: 4, value: 4, class: "coaching-range" %>
+  <%= render 'users/options/truthness' %>
+
+  <%= form.label :relationships, value: "I am satisfied with my relationships", class: "coaching-label" %>
+  <div class="coaching-field-description">Spouse, family, friends, acquaintances, ...</div>  
+  <%= form.range_field :relationships, min: 0, max: 4, value: 4, class: "coaching-range" %>
+  <%= render 'users/options/truthness' %>
+
+  <%= form.label :leisure_time, value: "My leisure time benefits my health and happiness", class: "coaching-label" %>
+  <%= form.range_field :leisure_time, min: 0, max: 4, value: 4, class: "coaching-range" %>
+  <%= render 'users/options/truthness' %>
+
+  <%= form.label :economy, value: "I have good economy", class: "coaching-label" %>
+  <%= form.range_field :economy, min: 0, max: 4, value: 4, class: "coaching-range" %>
+  <%= render 'users/options/truthness' %>
+  
+  <%= form.submit yield(:submit_button_text) %>
+<% end %>
+
+<script>
+
+</script>
