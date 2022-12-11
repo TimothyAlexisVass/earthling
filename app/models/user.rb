@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   before_save :downcase_email
 
+  belongs_to :selected_food_item
+
   validates :name, length: { minimum: 2, maximum: 255 },
                    format: { with: /\A[A-Za-z\u00C0-\u00FF][A-Za-z\u00C0-\u00FF\'\-]+([\ A-Za-z\u00C0-\u00FF][A-Za-z\u00C0-\u00FF\'\-]+)*/ }
   validates :email, length: { maximum: 255 },

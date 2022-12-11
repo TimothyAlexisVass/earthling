@@ -1,4 +1,6 @@
 class FoodItem < ApplicationRecord
+  belongs_to :selected_food_item
+
   validates_presence_of :name_se,
                         :name_en,
                         :energy,
