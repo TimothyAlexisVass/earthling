@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :email, length: { maximum: 255 },
                     format: URI::MailTo::EMAIL_REGEXP,
                     uniqueness: { case_sensitive: false }
-  validates_presence_of :name, :email, :weight, :height,
+  validates_presence_of :name, :email, :weight, :height, :gender,
                         :refined_carbohydrates, :learning, :plans_motivation,
                         :denatured_macronutrients, :nutritional_requirement,
                         :nutritionally_dense, :tattoos, :align_with_facts,
