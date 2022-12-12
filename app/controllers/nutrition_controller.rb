@@ -4,6 +4,7 @@ class NutritionController < ApplicationController
     @food_list = get_food_list
     @total_amount = total_amount
     @total_energy = total_energy
+    @activity_level = activity_level
   end
 
   private
@@ -24,5 +25,9 @@ class NutritionController < ApplicationController
 
     def total_energy
       @food_list.sum{ |item| item[:data][:energy].to_f }
+    end
+
+    def activity_level
+      [1, 1.12, 1.20, 1.28][@user.physical_activity]
     end
 end
