@@ -3,9 +3,17 @@
     <tr>
       <th>Item</th>
       <th>Amount</th>
+      <th>Energy</th>
     </tr>
   </thead>
   <tbody>
     <%= render partial: 'food_item', collection: @food_list %>
   </tbody>
+  <tfoot>
+    <tr>
+      <td>Total</td>
+      <td><%= @total_amount %></td>
+      <td><%= @total_energy %></td>
+    </tr>
+  </tfoot>
 </table>

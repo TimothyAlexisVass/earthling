@@ -163,6 +163,29 @@ nav a:hover {
     transition: all .7s !important;
 }
 
+table {
+    border: 1px solid var(--distinguished);
+    border-radius: 10px;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+thead, tfoot {
+    background: var(--distinguished);
+    font-weight: 700;
+    color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+tr:nth-of-type(even) {
+    background: #f2f2f2;
+}
+
+th, td {
+    padding: 5px 8px;
+}
+
 blockquote {
     font-size: 90%;
     background: #f0f0ff;
