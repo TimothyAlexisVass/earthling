@@ -1,0 +1,25 @@
+<h2>Recommendations</h2>
+<table>
+  <thead class="sticky-top">
+    <tr>
+      <th>Nutrient</th>
+      <th>Amount</th>
+      <th>Percent</th>
+      <th>RDI</th>
+      <th>UL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @totals.each do |key, value| %>
+      <% if @daily_requirements[key] || @upper_limit[key] %>
+        <tr style="color: <%= value.to_f < @daily_requirements[key].to_f ? "inherit" : value.to_f > @upper_limit[key].to_f && @upper_limit[key] ? "red" : "green" %>">
+          <td><%= @field_names[key] %></td>
+          <td><%= value %> <%= @units[key] %></td>
+          <td><%= @daily_requirements[key] ? "#{(100 * value / @daily_requirements[key]).round(1)} %" : "-" %></td>
+          <td><%= @daily_requirements[key] ? "#{@daily_requirements[key]}  #{@units[key]}" : "-" %></td>
+          <td><%= @upper_limit[key] ? "#{@upper_limit[key]}  #{@units[key]}" : "-" %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_11_152618) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_12_194532) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,7 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_152618) do
     t.decimal "sodium", precision: 10, scale: 2
     t.decimal "sodium_chloride", precision: 10, scale: 2
     t.decimal "selenium", precision: 10, scale: 2
-    t.decimal "zink", precision: 10, scale: 2
+    t.decimal "zinc", precision: 10, scale: 2
     t.decimal "starch", precision: 10, scale: 2
     t.integer "waste"
     t.datetime "created_at", null: false
@@ -120,6 +120,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_152618) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "gender"
+    t.integer "age"
   end
 
   add_foreign_key "selected_food_items", "food_items"

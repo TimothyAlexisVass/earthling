@@ -55,7 +55,7 @@ class FoodItem < ApplicationRecord
                         :sodium,
                         :sodium_chloride,
                         :selenium,
-                        :zink,
+                        :zinc,
                         :starch,
                         :waste
 end

@@ -2,6 +2,10 @@
     --base: hsl(115, 57%, 60%);
     --accent: #59e;
     --distinguished: #016;
+    --carbohydrates: #7bff7b;
+    --fat: #7b7bff;
+    --protein: #d07bff;
+    --fiber: #ffb97b;
     --3d-shadow: 0 1px .5px hsl(0, 0%, 95%),
                  0 2px .5px hsl(0, 0%, 90%),
                  0 3px .5px hsl(0, 0%, 85%),
@@ -167,7 +171,9 @@ table {
     border: 1px solid var(--distinguished);
     border-radius: 10px;
     border-spacing: 0;
+    width: 100%;
     overflow: hidden;
+    margin: 10px 0;
 }
 
 thead, tfoot {
@@ -184,6 +190,11 @@ tr:nth-of-type(even) {
 
 th, td {
     padding: 5px 8px;
+}
+
+.sticky-top {
+    position: sticky;
+    top: 0;
 }
 
 blockquote {

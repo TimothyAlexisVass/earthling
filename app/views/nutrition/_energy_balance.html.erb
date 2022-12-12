@@ -1,0 +1,50 @@
+<h2>Energy distribution</h2>
+<div style="display: flex">
+  <p style="font-size: 11px; text-align: right; line-height: 21px; width: 120px; padding-right: 5px; margin:0">Intake</p>
+  <div style="width: 100%; height: 20px; border: 1px solid black; overflow: hidden">
+    <div style="display: inline-block; width: <%= @carbohydrates_percent%>%; height: 21px; background: var(--carbohydrates);"></div><div style="display: inline-block; width: <%= @fat_percent%>%; height: 21px; background: var(--fat);"></div><div style="display: inline-block; width: <%= @protein_percent%>%; height: 21px; background: var(--protein);"></div><div style="display: inline-block; width: <%= @fiber_percent%>%; height: 21px; background: var(--fiber);"></div>
+  </div>
+</div>
+<div style="display: flex">
+  <p style="font-size: 11px; text-align: right; line-height: 21px; width: 120px; padding-right: 5px; margin:0">Recommendation</p>
+  <div style="width: 100%; height: 20px; border: 1px solid black; overflow: hidden">
+    <div style="display: inline-block; width: 50%; height: 21px; background: var(--carbohydrates);"></div><div style="display: inline-block; width: 30.5%; height: 21px; background: var(--fat);"></div><div style="display: inline-block; width: 12.5%; height: 21px; background: var(--protein);"></div><div style="display: inline-block; width: 7%; height: 21px; background: var(--fiber);"></div>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>Energy</th>
+      <th>Percent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Carbohydrates</td>
+      <td><%= @totals[:carbohydrates] %> g</td>
+      <td><%= @carbohydrates_energy %> kcal</td>
+      <td><%= @carbohydrates_percent %> %</td>
+    </tr>
+    <tr>
+      <td>Fat</td>
+      <td><%= @totals[:fat] %> g</td>
+      <td><%= @fat_energy %> kcal</td>
+      <td><%= @fat_percent %> %</td>
+    </tr>
+    <tr>
+      <td>Protein</td>
+      <td><%= @totals[:protein] %> g</td>
+      <td><%= @protein_energy %> kcal</td>
+      <td><%= @protein_percent %> %</td>
+    </tr>
+    <tr>
+      <td>Fiber</td>
+      <td><%= @totals[:fiber] %> g</td>
+      <td><%= @fiber_energy %> kcal</td>
+      <td><%= @fiber_percent %> %</td>
+    </tr>
+  </tbody>
+</table>
