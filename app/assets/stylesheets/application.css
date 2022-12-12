@@ -236,23 +236,6 @@ li.autocomplete-listitem:hover {
     font-style: italic;
 }
 
-.flex {
-    display: flex;
-    justify-content: space-between;
-}
-
-.flex-1, .flex-5 {
-    width: 0;
-}
-
-.flex-1 {
-    flex-grow: 1;
-}
-
-.flex-5 {
-    flex-grow: 5;
-}
-
 .coaching-form .flex p {
     width: 20%;
     text-align: center;
@@ -319,10 +302,6 @@ input {
     border: 1px solid #aaa;
 }
 
-.x-button {
-    height: auto !important;
-}
-
 input[type="submit"]:disabled {
     cursor: default;
     opacity: .3;
@@ -347,6 +326,23 @@ input[type="submit"]:disabled {
 
 .upper {
     text-transform: uppercase;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-2, .flex-8 {
+    width: 0;
+}
+
+.flex-2 {
+    flex-grow: 1;
+}
+
+.flex-8 {
+    flex-grow: 2;
 }
 
 .xx-large {
