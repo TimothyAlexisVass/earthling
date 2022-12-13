@@ -2,6 +2,7 @@ class NutritionController < ApplicationController
   include NutritionHelper
 
   def show
+    @selected_food_item = SelectedFoodItem.new
     @user = User.first
     @food_list = get_food_list
     @activity_level = [1, 1.12, 1.20, 1.28][@user.physical_activity]
