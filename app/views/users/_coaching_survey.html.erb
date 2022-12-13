@@ -3,6 +3,7 @@
   <%= render 'shared/error_messages', object: form.object %>
   <div class="flex">
     <%= form.text_field :name, placeholder: "Your Name", class: "flex-8" %>
+    <%= form.select :gender, @genders %>
     <%= form.email_field :email, placeholder: "your@email.here", class: "flex-8" %>
     <%= form.number_field :weight, placeholder: "weight (kg)", class: "flex-2" %>
     <%= form.number_field :height, placeholder: "height (cm)", class: "flex-2" %>
@@ -124,7 +125,3 @@
     <%= form.submit "Send coaching request" %>
   </center>
 <% end %>
-
-<script>
-
-</script>

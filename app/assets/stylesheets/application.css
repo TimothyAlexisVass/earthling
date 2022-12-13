@@ -107,8 +107,16 @@ form {
     width: 100%;
 }
 
-input {
+input, select {
     padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    background-color: white;
+}
+
+input[type="submit"]:disabled {
+    cursor: default;
+    opacity: .3;
 }
 
 h1, h2, h3, h4, h5 {
@@ -329,16 +337,6 @@ input[type="submit"], .swal-button {
     box-shadow: var(--3d-shadow);
     height: 60px;
     width: min-content;
-}
-
-input {
-    border-radius: 5px;
-    border: 1px solid #aaa;
-}
-
-input[type="submit"]:disabled {
-    cursor: default;
-    opacity: .3;
 }
 
 .heading-button {

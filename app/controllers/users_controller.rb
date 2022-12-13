@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
+    @genders = [:male, :female]
   end
 
   def create
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(
-        :name, :email, :phone, :weight, :height,
+        :name, :email, :phone, :weight, :height, :gender,
         :refined_carbohydrates, :learning, :plans_motivation,
         :denatured_macronutrients, :nutritional_requirement,
         :nutritionally_dense, :tattoos, :align_with_facts,
