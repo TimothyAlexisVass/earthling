@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     <% @totals.each do |key, value| %>
-      <% if @daily_requirements[key] || @upper_limit[key] %>
+      <% if @daily_requirements[key] || @upper_limit[key] || @show_all_nutrients %>
         <tr style="color: <%= value.to_f < @daily_requirements[key].to_f ? "inherit" : value.to_f > @upper_limit[key].to_f && @upper_limit[key] ? "red" : "green" %>">
           <td><%= @field_names[key] %></td>
           <td><%= value %> <%= @units[key] %></td>
