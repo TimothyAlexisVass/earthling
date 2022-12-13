@@ -1,10 +1,66 @@
-<%= form_for(@selected_food_item, html: {class: "coaching-form"}) do |form| %>
-  <%= render 'shared/error_messages', object: form.object %>
-  <%= form.hidden_field :user_id, value: @user.id %>
-  <%= form.label :food_item_id, value: "Food item id" %>
-  <%= form.text_field :food_item_id %>
-  <%= form.number_field :amount, placeholder: "Amount" %>
-  <center>
-    <%= form.submit "Add item" %>
-  </center>
-<% end %>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
+<script>
+function htmlDecode(input) {
+  var doc = new DOMParser().parseFromString(input, "text/html");
+  return doc.documentElement.textContent;
+}
+
+$(document).ready(function(){
+  $('#food_item_name').keyup(function(e){
+    e.preventDefault();
+    var food_item_name = $('#food_item_name').val()
+    $.ajax({
+      type: 'GET',
+      url: '/nutrition/food_items_selection',
+      data: `food_item_name=${food_item_name}`,
+      dataType: 'json',
+      complete: function(response){
+        data = htmlDecode(response.responseText);
+        if(data.length === 0 || food_item_name === '' ) {
+          $('#foodItemsList').hide();
+          $('#foodItemAdd').prop('disabled', true);
+        } else {
+          $('#foodItemsList').show().html(data);
+        }
+      }
+    });
+  });
+});
+
+function validateForm(){
+  var id = $('#selected_food_item_food_item_id').val();
+  var amount = $('#amount').val();
+  if (amount == "" || amount == 0) {
+      swal("Please", "Enter amount.", "warning");
+      return false;
+  }
+  else if (id == "") {
+      swal("Please", "Select a food item.", "warning");
+      return false;
+  }
+}
+
+$(document).on('click', '.autocomplete-listitem', function(e){
+  e.preventDefault();
+  $('#foodItemsList').hide();
+  $('#food_item_name').val($(this).data('name'));
+  $('#selected_food_item_food_item_id').val($(this).data('id'));
+  $('#foodItemAdd').prop('disabled', false);
+});
+
+</script>
+
+<form method="post" action="/selected_food_items" id="new_selected_food_item" class="coaching-form" onsubmit="return validateForm()" accept-charset="UTF-8" autocomplete="off">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type="hidden" name="selected_food_item[user_id]" id="selected_food_item_user_id" value="<%= @user.id %>" autocomplete="off">
+  <input type="hidden" name="selected_food_item[food_item_id]" id="selected_food_item_food_item_id">
+  <div class="flex">
+    <input type="text" id="food_item_name" placeholder="Add food item" class="flex-2" />
+    <input type="number" style="max-width: 53px; text-align: right; padding-right: 20px" name="selected_food_item[amount]" id="selected_food_item_amount" value="100" max="9999" onKeyUp="if(this.value>9999){this.value='9999';}else if(this.value<1){this.value='1';}" class="flex-1" /><span style="font-size: 15px; line-height: 45px; position: relative; right: 20px">g</span>
+    <input disabled id="foodItemAdd" type="submit" name="commit" value="add" class="small-button" />
+  </div>
+  <div style="position: relative">
+    <ul hidden id="foodItemsList" class="autoselect-list"></ul>
+  </div>
+</form>

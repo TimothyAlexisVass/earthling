@@ -107,11 +107,14 @@ form {
     width: 100%;
 }
 
-input, select {
+input, select, input[type="submit"].small-button {
+    height: auto;
     padding: 10px;
+    margin: 0;
     border-radius: 5px;
     border: 1px solid #aaa;
     background-color: white;
+    box-shadow: none;
 }
 
 input[type="submit"]:disabled {
@@ -235,7 +238,8 @@ ul.autoselect-list {
     text-align: left;
     position: absolute;
     background-color: white;
-    width: calc(100% + 110px);
+    width: calc(100% - 12px);
+    border-radius: 5px;
     margin-top: 15px;
     padding: 5px;
     border: 1px solid #d9dde3;
@@ -365,15 +369,15 @@ input[type="submit"], .swal-button {
     justify-content: space-between;
 }
 
-.flex-2, .flex-8 {
+.flex-1, .flex-2 {
     width: 0;
 }
 
-.flex-2 {
+.flex-1 {
     flex-grow: 1;
 }
 
-.flex-8 {
+.flex-2 {
     flex-grow: 2;
 }
 

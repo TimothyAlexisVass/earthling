@@ -2,11 +2,11 @@
 <%= form_for(@user, url: root_path, html: {class: "coaching-form"}) do |form| %>
   <%= render 'shared/error_messages', object: form.object %>
   <div class="flex">
-    <%= form.text_field :name, placeholder: "Your Name", class: "flex-8" %>
+    <%= form.text_field :name, placeholder: "Your Name", class: "flex-2" %>
     <%= form.select :gender, @genders %>
-    <%= form.email_field :email, placeholder: "your@email.here", class: "flex-8" %>
-    <%= form.number_field :weight, placeholder: "weight (kg)", class: "flex-2" %>
-    <%= form.number_field :height, placeholder: "height (cm)", class: "flex-2" %>
+    <%= form.email_field :email, placeholder: "your@email.here", class: "flex-2" %>
+    <%= form.number_field :weight, placeholder: "weight (kg)", class: "flex-1" %>
+    <%= form.number_field :height, placeholder: "height (cm)", class: "flex-1" %>
   </div>
   <%= form.label :refined_carbohydrates, value: "I am free from refined carbohydrates", class: "coaching-label" %>
   <div class="coaching-field-description">"White" sugars and starches</div>  
