@@ -12,7 +12,11 @@
   <tbody>
     <% @totals.each do |key, value| %>
       <% if @daily_requirements[key] || @upper_limit[key] || @show_all_nutrients %>
-        <tr style="color: <%= value.to_f < @daily_requirements[key].to_f ? "inherit" : value.to_f > @upper_limit[key].to_f && @upper_limit[key] ? "red" : "green" %>">
+        <tr style="height: 0; position: relative">
+          <td colspan="5" style="padding: 0; position: relative"><div style="position: absolute; height: 37px; z-index: 7; opacity: .2; background: <%= value.to_f < @daily_requirements[key].to_f ? "orange" : value.to_f > @upper_limit[key].to_f && @upper_limit[key] ? "red" : "green" %>; width: <%= @daily_requirements[key] ? "#{(100 * value / @daily_requirements[key]).round(1)}" : "100" %>%"></div></td>
+        </tr>
+        <tr style="height: 0"><td style="padding: 0"></td></tr>
+        <tr style="height: 37px; color: <%= value.to_f < @daily_requirements[key].to_f ? "inherit" : value.to_f > @upper_limit[key].to_f && @upper_limit[key] ? "red" : "green" %>">
           <td><%= @field_names[key] %></td>
           <td><%= value %> <%= @units[key] %></td>
           <td><%= @daily_requirements[key] ? "#{(100 * value / @daily_requirements[key]).round(1)} %" : "-" %></td>

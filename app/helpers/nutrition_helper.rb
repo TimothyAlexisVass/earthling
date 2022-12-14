@@ -51,6 +51,7 @@ module NutritionHelper
   def get_food_list
     list = SelectedFoodItem.where(user_id: @user.id).map{ |selected_food_item|
       {
+        selected_food_item: selected_food_item,
         data: (food_item=FoodItem.where(id: selected_food_item.food_item_id).first),
         amount: selected_food_item.amount,
         energy: food_item[:energy]*selected_food_item.amount/100.0
@@ -76,9 +77,9 @@ module NutritionHelper
   end
 
   def totals
-    total_h = {}
+    total_h = { amount: @food_list.sum{ |item| item[:amount] } }
     fields[0...-2].each do |field|
-      total_h[field] = @food_list.sum{ |item| item[:data][field] }.to_f
+      total_h[field] = @food_list.sum{ |item| item[:data][field]*item[:amount]/100 }.to_f
     end
     total_h[:water] = (total_h[:water]/100.0).round(1)
     puts total_h

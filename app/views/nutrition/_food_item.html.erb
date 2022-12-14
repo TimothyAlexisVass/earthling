@@ -1,5 +1,5 @@
 <tr>
   <td><%= food_item[:data].name_en %></td>
   <td><%= food_item[:amount] %></td>
-  <td><%= food_item[:energy] %></td>
+  <td class="flex space-between"><%= food_item[:energy] %><%= button_to "X", food_item[:selected_food_item], method: :delete %></td>
 </tr>

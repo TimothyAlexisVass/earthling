@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
   resources :food_items, only: [:new, :create]
-  resources :selected_food_items, only: [:create]
+  resources :selected_food_items, only: [:create, :destroy, :show]
 end

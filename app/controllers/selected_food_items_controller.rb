@@ -9,7 +9,15 @@ class SelectedFoodItemsController < ApplicationController
   end
 
   def destroy
-    @selected_food_item = SelectedFoodItem.where(user_id: params.user_id).where(food_item_id: params.food_item_id)
+    puts "#"*50
+    puts params[:id]
+    puts "#"*50
+    puts "destroying SelectedFoodItem with id #{params[:id]}"
+    SelectedFoodItem.destroy(params[:id])
+    redirect_to nutrition_path
+  end
+
+  def show
   end
 
   private
