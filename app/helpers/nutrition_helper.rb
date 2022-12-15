@@ -233,7 +233,7 @@ module NutritionHelper
       fat: set_decimal_precision(energy * 0.305 / kcal_per_gram(:fat)),
       protein: set_decimal_precision(energy * 0.145 / kcal_per_gram(:protein)),
       fiber: set_decimal_precision(energy * 0.05 / kcal_per_gram(:protein)),
-      water: (34 * @activity_level * @gender_multiplier * @weight)/100.0,
+      water: set_decimal_precision((34 * @activity_level * @gender_multiplier * @weight)/100.0),
       monosaccharides: nil,
       disaccharides: nil,
       sucrose: nil,
