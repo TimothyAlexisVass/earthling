@@ -13,7 +13,7 @@
     <tr>
       <td>Total</td>
       <td><%= @totals[:amount] %></td>
-      <td><%= @totals[:energy] %></td>
+      <td class="flex space-between"><%= @totals[:energy] %><%= button_to "clear", nutrition_clear_all_selected_food_items_path(user_id: @user.id) %></td>
     </tr>
   </tfoot>
 </table>

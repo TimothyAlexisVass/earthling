@@ -13,6 +13,13 @@ class SelectedFoodItemsController < ApplicationController
     redirect_to nutrition_path
   end
 
+  def clear_all
+    puts "#"*250
+    puts "This is happening"
+    SelectedFoodItem.where(user_id: params[:user_id]).destroy_all
+    redirect_to nutrition_path
+  end
+
   def show
   end
 
