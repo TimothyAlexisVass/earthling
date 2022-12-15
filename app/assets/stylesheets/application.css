@@ -364,6 +364,10 @@ input[type="submit"], .swal-button {
     top: 55px;
 }
 
+.position-relative {
+    position: relative;
+}
+
 .left {
     text-align: left;
 }
@@ -474,4 +478,18 @@ input[type="submit"], .swal-button {
 
 #show-debug {
     user-select: none;
+}
+
+#selected_food_item_amount {
+    max-width: 53px;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.number-input-unit {
+    font-size: 15px;
+    line-height: 45px;
+    position: relative;
+    right: 20px;
+    width: 0;
 }

@@ -57,10 +57,11 @@ $(document).on('click', '.autocomplete-listitem', function(e){
   <input type="hidden" name="selected_food_item[food_item_id]" id="selected_food_item_food_item_id">
   <div class="flex">
     <input type="text" id="food_item_name" placeholder="Add food item" class="flex-2" />
-    <input type="number" style="max-width: 53px; text-align: right; padding-right: 20px" name="selected_food_item[amount]" id="selected_food_item_amount" value="100" max="9999" onKeyUp="if(this.value>9999){this.value='9999';}else if(this.value<1){this.value='1';}" class="flex-1" /><span style="font-size: 15px; line-height: 45px; position: relative; right: 20px">g</span>
+    <input type="number" name="selected_food_item[amount]" id="selected_food_item_amount" value="100" max="9999" onKeyUp="if(this.value>9999){this.value='9999';}else if(this.value<1){this.value='1';}" class="flex-1" />
+    <span class="number-input-unit">g</span>
     <input disabled id="foodItemAdd" type="submit" name="commit" value="add" class="small-button" />
   </div>
-  <div style="position: relative">
+  <div class="position-relative">
     <ul hidden id="foodItemsList" class="autoselect-list"></ul>
   </div>
 </form>
