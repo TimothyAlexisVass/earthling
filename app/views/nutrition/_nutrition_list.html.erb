@@ -19,7 +19,7 @@
         <tr style="height: 37px; color: <%= value.to_f < @daily_requirements[key].to_f ? "inherit" : value.to_f > @upper_limit[key].to_f && @upper_limit[key] ? "red" : "green" %>">
           <td><%= @field_names[key] %></td>
           <td><%= value %> <%= @units[key] %></td>
-          <td><%= @daily_requirements[key] ? "#{(100 * value / @daily_requirements[key]).round(1)} %" : "-" %></td>
+          <td><%= @daily_requirements[key] ? "#{percent(value.to_f / @daily_requirements[key])} %" : "-" %></td>
           <td><%= @daily_requirements[key] ? "#{@daily_requirements[key]}  #{@units[key]}" : "-" %></td>
           <td><%= @upper_limit[key] ? "#{@upper_limit[key]}  #{@units[key]}" : "-" %></td>
         </tr>

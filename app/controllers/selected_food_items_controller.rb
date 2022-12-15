@@ -9,10 +9,6 @@ class SelectedFoodItemsController < ApplicationController
   end
 
   def destroy
-    puts "#"*50
-    puts params[:id]
-    puts "#"*50
-    puts "destroying SelectedFoodItem with id #{params[:id]}"
     SelectedFoodItem.destroy(params[:id])
     redirect_to nutrition_path
   end

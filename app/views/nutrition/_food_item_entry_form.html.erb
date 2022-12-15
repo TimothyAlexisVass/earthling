@@ -44,7 +44,7 @@ function validateForm(){
 $(document).on('click', '.autocomplete-listitem', function(e){
   e.preventDefault();
   $('#foodItemsList').hide();
-  $('#food_item_name').val($(this).data('name'));
+  $('#food_item_name').val($(this).data('name')).focus();
   $('#selected_food_item_food_item_id').val($(this).data('id'));
   $('#foodItemAdd').prop('disabled', false);
 });

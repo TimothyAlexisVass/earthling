@@ -19,19 +19,20 @@ class NutritionController < ApplicationController
     @total_polyunsaturated = total_polyunsaturated
     @total_omega3 = total_omega3
     @total_omega6 = total_omega6
-    @omega3percent = (100 * @total_omega3/@total_polyunsaturated).round(2)
-    @omega6percent = @total_omega3 > 0 ? (100 - @omega3percent) : 100
+    @omega3percent = percent(@total_omega3/@total_polyunsaturated) if @total_polyunsaturated > 0 
+    @omega6percent = (@total_omega3 > 0 ? (100 - @omega3percent) : 100).round(2)
+    if @totals[:energy] > 0
+      @carbohydrates_energy = (kcal_per_gram(:carbohydrates) * @totals[:carbohydrates]).round(1)
+      @carbohydrates_percent = percent(@carbohydrates_energy.to_f / @totals[:energy])
 
-    @carbohydrates_energy = (kcal_per_gram(:carbohydrates) * @totals[:carbohydrates]).round(1)
-    @carbohydrates_percent = percent(@carbohydrates_energy / @totals[:energy])
+      @fat_energy = set_decimal_precision(kcal_per_gram(:fat) * @totals[:fat])
+      @fat_percent = percent(@fat_energy.to_f / @totals[:energy])
 
-    @fat_energy = (kcal_per_gram(:fat) * @totals[:fat]).round(1)
-    @fat_percent = percent(@fat_energy / @totals[:energy])
+      @protein_energy = set_decimal_precision(kcal_per_gram(:protein) * @totals[:protein])
+      @protein_percent = percent(@protein_energy.to_f / @totals[:energy])
 
-    @protein_energy = (kcal_per_gram(:protein) * @totals[:protein]).round(1)
-    @protein_percent = percent(@protein_energy / @totals[:energy])
-
-    @fiber_energy = (kcal_per_gram(:fiber) * @totals[:fiber]).round(1)
-    @fiber_percent = (100 - @protein_percent - @fat_percent - @carbohydrates_percent).round(2)
+      @fiber_energy = set_decimal_precision(kcal_per_gram(:fiber) * @totals[:fiber])
+      @fiber_percent = (100 - @protein_percent - @fat_percent - @carbohydrates_percent).round(2)
+    end
   end
 end

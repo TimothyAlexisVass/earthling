@@ -6,7 +6,7 @@ module NutritionHelper
   end
 
   def energy
-    @energy ||= 2000 * @gender_multiplier * @activity_level
+    @energy ||= (2000 * @gender_multiplier * @activity_level).to_i
   end
 
   def polyunsaturated
@@ -21,7 +21,7 @@ module NutritionHelper
   end
 
   def total_polyunsaturated
-    @total_polyunsaturated ||= @totals.filter{ |item| polyunsaturated.include? item }.sum{ |key, value| value }
+    @total_polyunsaturated ||= set_decimal_precision(@totals.filter{ |item| polyunsaturated.include? item }.sum{ |key, value| value })
   end
 
   def omega6
@@ -32,7 +32,7 @@ module NutritionHelper
   end
 
   def total_omega6
-    @total_omega6 ||= @totals.filter{ |item| omega6.include? item }.sum{ |key, value| value }
+    @total_omega6 ||= set_decimal_precision(@totals.filter{ |item| omega6.include? item }.sum{ |key, value| value })
   end
 
   def omega3
@@ -45,7 +45,7 @@ module NutritionHelper
   end
 
   def total_omega3
-    @total_omega3 ||= @totals.filter{ |item| omega3.include? item }.sum{ |key, value| value }
+    @total_omega3 ||= set_decimal_precision(@totals.filter{ |item| omega3.include? item }.sum{ |key, value| value })
   end
 
   def get_food_list
@@ -54,7 +54,7 @@ module NutritionHelper
         selected_food_item: selected_food_item,
         data: (food_item=FoodItem.where(id: selected_food_item.food_item_id).first),
         amount: selected_food_item.amount,
-        energy: food_item[:energy]*selected_food_item.amount/100.0
+        energy: set_decimal_precision(food_item[:energy]*selected_food_item.amount/100.0)
       }
     }
   end
@@ -73,16 +73,25 @@ module NutritionHelper
   end
 
   def percent(value)
-    (100 * value).round(2)
+    return 0 if value == 0
+    set_decimal_precision(value * 100, 0, 80)
+  end
+
+  def set_decimal_precision(value, d2=3, d1=10)
+    return 0 if value == 0
+    return value.to_i if value.to_i == value.to_f
+    value < d2 ? value.round(2) : value < d1 ? value.round(1) : value.round(0).to_i
   end
 
   def totals
     total_h = { amount: @food_list.sum{ |item| item[:amount] } }
     fields[0...-2].each do |field|
-      total_h[field] = @food_list.sum{ |item| item[:data][field]*item[:amount]/100 }.to_f
+      total_h[field] = @food_list.sum{ |item|
+        value = item[:data][field]*item[:amount]/100
+      }.to_f
+      total_h[field] = set_decimal_precision(total_h[field])
     end
     total_h[:water] = (total_h[:water]/100.0).round(1)
-    puts total_h
     total_h
   end
 
@@ -91,7 +100,7 @@ module NutritionHelper
   end
 
   def requirement_calculation(minimum, factor, decimals)
-    factor * megajoule_energy <= minimum ? minimum : (factor * megajoule_energy).round(0)
+    set_decimal_precision(factor * megajoule_energy <= minimum ? minimum : factor * megajoule_energy)
   end
 
   def field_names_en
@@ -221,9 +230,9 @@ module NutritionHelper
       amount: nil,
       energy: energy,
       carbohydrates: (energy / 2 / kcal_per_gram(:carbohydrates)).round(1),
-      fat: (640 * @gender_multiplier * @activity_level / kcal_per_gram(:carbohydrates)).round(1),
-      protein: (253 * @gender_multiplier * @activity_level / kcal_per_gram(:carbohydrates)).round(1),
-      fiber: (3 * megajoule_energy).round(1),
+      fat: set_decimal_precision(640 * @gender_multiplier * @activity_level / kcal_per_gram(:carbohydrates)),
+      protein: set_decimal_precision(253 * @gender_multiplier * @activity_level / kcal_per_gram(:carbohydrates)),
+      fiber: set_decimal_precision(3 * megajoule_energy),
       water: (34 * @activity_level * @gender_multiplier * @weight)/100.0,
       monosaccharides: nil,
       disaccharides: nil,
