@@ -107,7 +107,7 @@ form {
     width: 100%;
 }
 
-input, select, input[type="submit"].small-button {
+input, select, textarea, input[type="submit"].small-button {
     height: auto;
     padding: 10px;
     margin: 0;
@@ -127,6 +127,7 @@ input#selected_food_item_amount::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number]#selected_food_item_amount {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 input[type="submit"].small-button {
@@ -377,7 +378,13 @@ input[type="submit"], .swal-button {
 }
 
 .center {
+    justify-content: center;
     text-align: center;
+}
+
+.decoration-none {
+    text-decoration: none;
+    color: inherit;
 }
 
 .upper {
@@ -386,8 +393,19 @@ input[type="submit"], .swal-button {
 
 .flex {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+}
+
+.pad-15 {
+    padding: 15px;
+}
+
+.margin-5 {
+    margin: 5px;
+}
+
+.space-between {
+    justify-content: space-between;
 }
 
 .button_to {
