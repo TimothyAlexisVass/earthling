@@ -59,6 +59,10 @@ module NutritionHelper
     }
   end
 
+  def get_top(field, amount)
+    FoodItem.order(Arel.sql("#{field} DESC")).first(amount).map{ |item| {name: item.name_en, value: item[field]}}
+  end
+
   def kcal_per_gram(type)
     {
       carbohydrates: 4.06,
@@ -92,6 +96,7 @@ module NutritionHelper
       total_h[field] = set_decimal_precision(total_h[field])
     end
     total_h[:water] = (total_h[:water]/100.0).round(1)
+    total_h[:vitamin_a] = set_decimal_precision(total_h[:vitamin_a] + total_h[:beta_carotene]/12)
     total_h
   end
 
@@ -196,8 +201,8 @@ module NutritionHelper
       dha_c22_6: "g",
       cholesterol: "mg",
       retinol: "µg",
-      vitamin_a: "RE",
-      beta_carotene: "RE",
+      vitamin_a: "RE (µg)",
+      beta_carotene: "RE (µg)",
       vitamin_d: "µg",
       vitamin_e: "mg",
       vitamin_k: "µg",

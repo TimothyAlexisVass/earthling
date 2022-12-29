@@ -35,4 +35,11 @@ class NutritionController < ApplicationController
       @fiber_percent = (100 - @protein_percent - @fat_percent - @carbohydrates_percent).round(2)
     end
   end
+
+  def top
+    @field = params[:field]
+    @amount = params[:amount].present? ? params[:amount].to_i : 10
+    @units = units
+    @top_list = get_top(@field, @amount)
+  end
 end

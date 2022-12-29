@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get '/nutrition', to: 'nutrition#show'
 
+  get '/nutrition/top', to: 'nutrition#top'
+
   get '/nutrition/food_items_selection', to: 'food_items#food_items_selection'
 
   get '/test', to: 'food_items#test'
