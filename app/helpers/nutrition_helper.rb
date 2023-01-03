@@ -210,7 +210,7 @@ module NutritionHelper
       riboflavin: "mg",
       vitamin_c: "mg",
       niacin: "mg",
-      niacin_equivalents: "NE",
+      niacin_equivalents: "NE (mg)",
       vitamin_b6: "mg",
       vitamin_b12: "µg",
       folate: "µg",
