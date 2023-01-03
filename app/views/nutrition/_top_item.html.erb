@@ -1,4 +1,5 @@
 <tr>
-  <td><%= top_item[:name] %></td>
-  <td><%= top_item[:value] %></td>
+  <td style="padding: 2px 8px"><%= top_item[:name] %></td>
+  <td style="padding: 2px 8px"><%= top_item[:value] %></td>
+  <td style="padding: 2px 8px"><%= (@need.to_f / top_item[:value].to_f * 100).round %> g</td>
 </tr>

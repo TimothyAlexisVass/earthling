@@ -169,6 +169,49 @@ module NutritionHelper
     }
   end
 
+  def micro_nutrients
+    @micro_nutrients ||= [
+      :lauric_acid_c12_0,
+      :myristic_acid_c14_0,
+      :palmitic_acid_c16_0,
+      :stearic_acid_c18_0,
+      :arachidic_acid_c20_0,
+      :palmitoleic_acid_c16_1,
+      :oleic_acid_c18_1,
+      :linoleic_acid_c18_2,
+      :linolenic_acid_c18_3,
+      :arachidonic_acid_c20_4,
+      :epa_c20_5,
+      :dpa_c22_5,
+      :dha_c22_6,
+      :retinol,
+      :vitamin_a,
+      :beta_carotene,
+      :vitamin_d,
+      :vitamin_e,
+      :vitamin_k,
+      :thiamine,
+      :riboflavin,
+      :vitamin_c,
+      :niacin,
+      :niacin_equivalents,
+      :vitamin_b6,
+      :vitamin_b12,
+      :folate,
+      :phosphorus,
+      :iodine,
+      :iron,
+      :calcium,
+      :potassium,
+      :copper,
+      :magnesium,
+      :sodium,
+      :sodium_chloride,
+      :selenium,
+      :zinc,
+    ]
+  end
+
   def units
     @units ||= {
       amount: "g",

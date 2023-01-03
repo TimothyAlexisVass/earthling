@@ -1,9 +1,10 @@
-<h1><%= @field.humanize %> top <%= @amount %></h1>
+<h2 style="margin: 10px 0"><%= @field.humanize %> top <%= @amount %></h2>
 <table>
   <thead>
     <tr>
       <th>Nutrient</th>
       <th><%= @units[@field.to_sym] %> / 100g</th>
+      <th></th>
     </tr>
   </thead>
   <%= render partial: 'top_item', collection: @top_list %>

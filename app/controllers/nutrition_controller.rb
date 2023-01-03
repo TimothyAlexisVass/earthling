@@ -11,6 +11,7 @@ class NutritionController < ApplicationController
     @show_all_nutrients = false
 
     @field_names = field_names_en
+    @micro_nutrients = micro_nutrients
     @units = units
     @daily_requirements = daily_requirements
     @upper_limit = upper_limit
@@ -39,7 +40,9 @@ class NutritionController < ApplicationController
   def top
     @field = params[:field]
     @amount = params[:amount].present? ? params[:amount].to_i : 10
+    @need = params[:need]
     @units = units
     @top_list = get_top(@field, @amount)
+    render layout: "only_main"
   end
 end

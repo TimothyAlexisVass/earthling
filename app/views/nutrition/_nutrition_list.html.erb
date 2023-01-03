@@ -1,6 +1,6 @@
 <h2>Recommendations</h2>
 <table>
-  <thead class="sticky-top">
+  <thead class="sticky-top" style="z-index: 888">
     <tr>
       <th>Nutrient</th>
       <th>Amount</th>
@@ -17,7 +17,15 @@
         </tr>
         <tr style="height: 0"><td style="padding: 0"></td></tr>
         <tr style="height: 37px; color: <%= value.to_f < @daily_requirements[key].to_f ? "inherit" : value.to_f > @upper_limit[key].to_f && @upper_limit[key] ? "red" : "green" %>">
-          <td><%= @field_names[key] %></td>
+          <td>
+            <% if value.to_f < @daily_requirements[key].to_f && @micro_nutrients.include?(key) %>
+              <button type="button" onclick="show('<%= key %>')" style="z-index: 777; position: relative; color: #5dd05d; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); height: 25px"><span style="line-height: 7px; font-size: 30px;">&#11014;</span></button>
+              <div id="<%= key %>" onclick="hide('<%= key %>')" style="z-index: 888; position: fixed; top: 0; left: 0; height: 100vh; width: 100vw; background: rgba(0,0,0,0.5); display: none">
+                <iframe src="<%= nutrition_top_path(field: key, amount: 20, need: @daily_requirements[key].to_f - value.to_f) %>" style="height: 90%; width: 90%; margin: 50px 4.9%; border-radius: 10px"></iframe>
+              </div>
+            <% end %>
+            <%= @field_names[key] %>
+          </td>
           <td><%= value %> <%= @units[key] %></td>
           <td><%= @daily_requirements[key] ? "#{percent(value.to_f / @daily_requirements[key])} %" : "-" %></td>
           <td><%= @daily_requirements[key] ? "#{@daily_requirements[key]}  #{@units[key]}" : "-" %></td>
@@ -27,3 +35,14 @@
     <% end %>
   </tbody>
 </table>
+
+<script>
+  function show(nutrient) {
+    const iframe_element = document.getElementById(nutrient);
+    iframe_element.style.display="block";
+  }
+  function hide(nutrient) {
+    const iframe_element = document.getElementById(nutrient);
+    iframe_element.style.display="none";
+  }
+</script>
