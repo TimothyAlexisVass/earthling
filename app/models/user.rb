@@ -1,13 +1,12 @@
 class User < ApplicationRecord
   before_save :downcase_email
 
-  belongs_to :selected_food_item
+  has_many :selected_food_items
 
   validates :name, length: { minimum: 2, maximum: 255 },
                    format: { with: /\A[A-Za-z\u00C0-\u00FF][A-Za-z\u00C0-\u00FF\'\-]+([\ A-Za-z\u00C0-\u00FF][A-Za-z\u00C0-\u00FF\'\-]+)*/ }
   validates :email, length: { maximum: 255 },
-                    format: URI::MailTo::EMAIL_REGEXP,
-                    uniqueness: { case_sensitive: false }
+                    format: URI::MailTo::EMAIL_REGEXP
   validates_presence_of :name, :email, :weight, :height, :gender,
                         :refined_carbohydrates, :learning, :plans_motivation,
                         :denatured_macronutrients, :nutritional_requirement,

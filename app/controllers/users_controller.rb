@@ -5,13 +5,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      # @user.send_survey_answers
+    puts user_params
+    if User.exists?(email: user_params[:email].downcase)
+      flash[:danger] = "A user with that email already exists"
+      render 'new'
+    else
+      User.create(user_params)
       flash[:success] = "Your answers have been submitted."
       redirect_to root_path
-    else
-      render 'new'
     end
   end
 
